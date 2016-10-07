@@ -72,8 +72,8 @@ namespace Sokoban
         public Level LoadLevel2(int levelNumber)
         {
             //supposed to be the real deal
-            string text = System.IO.File.ReadAllText(@"C:\Users\Heider\Google Drive\Avans\Jaar 2 v2\MODL3\SokobanGit\doolhof" + levelNumber + ".txt");
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Heider\Google Drive\Avans\Jaar 2 v2\MODL3\SokobanGit\doolhof" + levelNumber + ".txt");
+            string text = System.IO.File.ReadAllText(@"..\..\..\doolhof" + levelNumber + ".txt");
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\..\doolhof" + levelNumber + ".txt");
 
             //this will only work with square levels! find another way.
             _currentLevel = new Level(100, 100);
