@@ -23,14 +23,14 @@ namespace Sokoban
 
         public void move(String direction)
         {
-            currentPos = currentLevel.currentPos.Value;
+            currentPos = currentLevel.TileArray[currentX, currentY];
 
             switch (direction)
             {
                 case "Left":
                 {
                     currentPos.hasPlayer = false;
-                    newPos = currentLevel.currentPos.Previous.Value;
+                    newPos = currentLevel.TileArray[currentX - 1, currentY];
                     currentPos = newPos;
 
                     currentPos.hasPlayer = true;
@@ -41,21 +41,21 @@ namespace Sokoban
 
                 case "Right":
                     {
-                        newPos = currentLevel.currentPos.Next.Value;
+                        newPos = currentLevel.TileArray[currentX + 1, currentY];
 
                         break;
                     }
 
                 case "Up":
                     {
-                        newPos = currentLevel.currentPos.Value;//How to make the tile know his northern neighbour???
+                        newPos = currentLevel.TileArray[currentX, currentY - 1];
 
                         break;
                     }
 
                 case "Down":
                     {
-                        newPos = currentLevel.currentPos.Value;//How to make the tile know his southern neighbour???
+                        newPos = currentLevel.TileArray[currentX, currentY + 1];
 
                         break;
                     }

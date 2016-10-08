@@ -13,35 +13,22 @@ namespace Sokoban
         //make tileArray size to fit perfectly to level.
         //no hardcoding
         public Player player;
-        public LinkedList<Tile> TileLinkedList;
+        public Tile[,] TileArray;
         public String lineString;
+        public String[] lineStrings;
         public int amountOfLines;
-        public LinkedListNode<Tile> currentPos;
 
         public Level(int levelLength, int levelWidth)
         {
             player = new Player(this);
             LevelLength = levelLength;
             LevelWidth = levelWidth;
-            TileLinkedList = new LinkedList<Tile>();
+            TileArray = new Tile[LevelLength, LevelWidth];
         }
 
-        public void AddTile(Tile tile)
+        public void AddTile(int x, int y, Tile tile)
         {
-            //TODO Make the tiles know ALL their neighbours
-            currentPos = TileLinkedList.First;
-            if (TileLinkedList.First.Value == null)
-            {
-                TileLinkedList.First.Value = tile;
-                currentPos = TileLinkedList.First;
-            }
-            else
-            {
-                currentPos.Next.Value = tile;
-                LinkedListNode<Tile> temp = currentPos;
-                currentPos = currentPos.Next;
-                currentPos.Previous.Value = temp.Value;
-            }
+            TileArray[x, y] = tile;
         }
 
         public void PrintLevel(int levelNumber)
@@ -72,7 +59,7 @@ namespace Sokoban
                                 Tile newTile = new Tile(Tile.TileType.Player);
                                 
                                 screenString = screenString + newTile.TileIcon;
-                                AddTile(newTile);
+                                AddTile(i, lineCount, newTile);
                                 player.currentX = i;
                                 player.currentY = lineCount;
                                 break;
@@ -82,14 +69,14 @@ namespace Sokoban
                             {
                                 Tile newTile = new Tile(Tile.TileType.Box);
                                 screenString = screenString + newTile.TileIcon;
-                                AddTile(newTile);
+                                AddTile(i, lineCount, newTile);
                                 break;
                             }
                         case '0':
                             {
                                 Tile newTile = new Tile(Tile.TileType.BoxOnPoint);
                                 screenString = screenString + newTile.TileIcon;
-                                AddTile(newTile);
+                                AddTile(i, lineCount, newTile);
                                 break;
                             }
 
@@ -97,7 +84,7 @@ namespace Sokoban
                             {
                                 Tile newTile = new Tile(Tile.TileType.Destination);
                                 screenString = screenString + newTile.TileIcon;
-                                AddTile(newTile);
+                                AddTile(i, lineCount, newTile);
                                 break;
                             }
 
@@ -105,7 +92,7 @@ namespace Sokoban
                             {
                                 Tile newTile = new Tile(Tile.TileType.Floor);
                                 screenString = screenString + newTile.TileIcon;
-                                AddTile(newTile);
+                                AddTile(i, lineCount, newTile);
                                 break;
                             }
 
@@ -113,7 +100,7 @@ namespace Sokoban
                             {
                                 Tile newTile = new Tile(Tile.TileType.Outerspace);
                                 screenString = screenString + newTile.TileIcon;
-                                AddTile(newTile);
+                                AddTile(i, lineCount, newTile);
                                 break;
                             }
 
@@ -121,19 +108,23 @@ namespace Sokoban
                             {
                                 Tile newTile = new Tile(Tile.TileType.Wall);
                                 screenString = screenString + newTile.TileIcon;
-                                AddTile(newTile);
+                                AddTile(i, lineCount, newTile);
                                 break;
                             }
                         default:
                             {
                                 Tile newTile = new Tile(Tile.TileType.Outerspace);
                                 screenString = screenString + newTile.TileIcon;
-                                AddTile(newTile);
+                                AddTile(i, lineCount, newTile);
                                 break;
                             }
 
                     }
-                    lineString = lineString + currentPos.Value.TileIcon;
+                    lineString = lineString + TileArray[i, lineCount].TileIcon;
+                    if (i < 1)
+                    {
+                        lineStrings = new string[lines.Length];
+                    }
                 }
                 Console.WriteLine(lineString);
                 lineCount++;
@@ -145,8 +136,11 @@ namespace Sokoban
         {
             for (int i = 0; i < amountOfLines; i++)
             {
-                
+                //lineStrings[i] = lineString;
+                Console.WriteLine(lineStrings[i]);
+                //lineStrings[i] = "Test line";
             }
+            System.IO.File.AppendAllLines(@"..\..\..\doolhof" + levelNumber + ".save.txt", lineStrings);
         }
 
     }
