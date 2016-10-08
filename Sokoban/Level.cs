@@ -57,8 +57,8 @@ namespace Sokoban
                                 //there should be a floor tile with a player object on top of it
                                 //player enum should be removed
                                 Tile newTile = new Tile(Tile.TileType.Player);
-                                
-                                screenString = screenString + newTile.TileIcon;
+
+                                screenString += newTile.TileIcon;
                                 AddTile(i, lineCount, newTile);
                                 player.currentX = i;
                                 player.currentY = lineCount;
@@ -68,14 +68,14 @@ namespace Sokoban
                         case 'o':
                             {
                                 Tile newTile = new Tile(Tile.TileType.Box);
-                                screenString = screenString + newTile.TileIcon;
+                                screenString += newTile.TileIcon;
                                 AddTile(i, lineCount, newTile);
                                 break;
                             }
                         case '0':
                             {
                                 Tile newTile = new Tile(Tile.TileType.BoxOnPoint);
-                                screenString = screenString + newTile.TileIcon;
+                                screenString += newTile.TileIcon;
                                 AddTile(i, lineCount, newTile);
                                 break;
                             }
@@ -83,7 +83,7 @@ namespace Sokoban
                         case 'x':
                             {
                                 Tile newTile = new Tile(Tile.TileType.Destination);
-                                screenString = screenString + newTile.TileIcon;
+                                screenString += newTile.TileIcon;
                                 AddTile(i, lineCount, newTile);
                                 break;
                             }
@@ -91,7 +91,7 @@ namespace Sokoban
                         case '.':
                             {
                                 Tile newTile = new Tile(Tile.TileType.Floor);
-                                screenString = screenString + newTile.TileIcon;
+                                screenString += newTile.TileIcon;
                                 AddTile(i, lineCount, newTile);
                                 break;
                             }
@@ -99,7 +99,7 @@ namespace Sokoban
                         case ' ':
                             {
                                 Tile newTile = new Tile(Tile.TileType.Outerspace);
-                                screenString = screenString + newTile.TileIcon;
+                                screenString += newTile.TileIcon;
                                 AddTile(i, lineCount, newTile);
                                 break;
                             }
@@ -107,40 +107,49 @@ namespace Sokoban
                         case '#':
                             {
                                 Tile newTile = new Tile(Tile.TileType.Wall);
-                                screenString = screenString + newTile.TileIcon;
+                                screenString += newTile.TileIcon;
                                 AddTile(i, lineCount, newTile);
                                 break;
                             }
+
+                        //case '█':
+                        //    {
+                        //        Tile newTile = new Tile(Tile.TileType.Wall);
+                        //        screenString += newTile.TileIcon;
+                        //        AddTile(i, lineCount, newTile);
+                        //        break;
+                        //    }
                         default:
                             {
                                 Tile newTile = new Tile(Tile.TileType.Outerspace);
-                                screenString = screenString + newTile.TileIcon;
+                                screenString += newTile.TileIcon;
                                 AddTile(i, lineCount, newTile);
                                 break;
                             }
 
                     }
                     lineString = lineString + TileArray[i, lineCount].TileIcon;
-                    if (i < 1)
-                    {
-                        lineStrings = new string[lines.Length];
-                    }
                 }
                 Console.WriteLine(lineString);
+                if (lineCount == 0)
+                {
+                    lineStrings = new string[lines.Length];
+                }
+                lineStrings[lineCount] = lineString;
                 lineCount++;
             }
             amountOfLines = lineCount;
+            System.IO.File.AppendAllLines(@"..\..\..\doolhof" + levelNumber + ".save.txt", lineStrings);
         }
 
         public void UpdateLevel(int levelNumber)
         {
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\..\doolhof" + levelNumber + ".save.txt");
             for (int i = 0; i < amountOfLines; i++)
             {
-                //lineStrings[i] = lineString;
-                Console.WriteLine(lineStrings[i]);
-                //lineStrings[i] = "Test line";
+                Console.WriteLine(lines[i]);
             }
-            System.IO.File.AppendAllLines(@"..\..\..\doolhof" + levelNumber + ".save.txt", lineStrings);
+            System.IO.File.WriteAllLines(@"..\..\..\doolhof" + levelNumber + ".save.txt", lines);
         }
 
     }

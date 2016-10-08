@@ -21,41 +21,68 @@ namespace Sokoban
             currentLevel = level;
         }
 
-        public void move(String direction)
+        public void Move(String direction)
         {
             currentPos = currentLevel.TileArray[currentX, currentY];
 
             switch (direction)
             {
                 case "Left":
-                {
-                    currentPos.hasPlayer = false;
-                    newPos = currentLevel.TileArray[currentX - 1, currentY];
-                    currentPos = newPos;
+                    {
+                        if (!HasCollision(direction))
+                        {
+                            currentPos.hasPlayer = false;
+                            newPos = currentLevel.TileArray[currentX - 1, currentY];
+                            currentPos = newPos;
 
-                    currentPos.hasPlayer = true;
-                    currentPos.TileIcon = Tile.TileType.Player.ToString();
+                            currentPos.hasPlayer = true;
+                            currentPos.TileIcon = Tile.TileType.Player.ToString();
+                        }
                     
                         break;
                     }
 
                 case "Right":
                     {
-                        newPos = currentLevel.TileArray[currentX + 1, currentY];
+                        if (!HasCollision(direction))
+                        {
+                            currentPos.hasPlayer = false;
+                            newPos = currentLevel.TileArray[currentX + 1, currentY];
+                            currentPos = newPos;
+
+                            currentPos.hasPlayer = true;
+                            currentPos.TileIcon = Tile.TileType.Player.ToString();
+                        }
 
                         break;
                     }
 
                 case "Up":
                     {
-                        newPos = currentLevel.TileArray[currentX, currentY - 1];
+                        if (!HasCollision(direction))
+                        {
+                            currentPos.hasPlayer = false;
+                            newPos = currentLevel.TileArray[currentX, currentY - 1];
+                            currentPos = newPos;
+
+                            currentPos.hasPlayer = true;
+                            currentPos.TileIcon = Tile.TileType.Player.ToString();
+                        }
 
                         break;
                     }
 
                 case "Down":
                     {
-                        newPos = currentLevel.TileArray[currentX, currentY + 1];
+                        if (!HasCollision(direction))
+                        {
+                            currentPos.hasPlayer = false;
+                            newPos = currentLevel.TileArray[currentX, currentY + 1];
+                            currentPos = newPos;
+
+                            currentPos.hasPlayer = true;
+                            currentPos.TileIcon = Tile.TileType.Player.ToString();
+                        }
 
                         break;
                     }
@@ -65,7 +92,54 @@ namespace Sokoban
                         break;
                     }
             }
-            //redraw the level
+            //TODO redraw the level
+        }
+
+        public bool HasCollision(String direction)
+        {
+            switch (direction)
+            {
+                case "Left":
+                    {
+                        if (currentLevel.TileArray[currentX - 1, currentY].TileIcon == Tile.TileType.Wall.ToString())
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+
+                case "Right":
+                    {
+                        if (currentLevel.TileArray[currentX + 1, currentY].TileIcon == Tile.TileType.Wall.ToString())
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+
+                case "Up":
+                    {
+                        if (currentLevel.TileArray[currentX, currentY - 1].TileIcon == Tile.TileType.Wall.ToString())
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+
+                case "Down":
+                    {
+                        if (currentLevel.TileArray[currentX, currentY + 1].TileIcon == Tile.TileType.Wall.ToString())
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+
+                default:
+                    {
+                        return true;
+                    }
+            }
         }
     }
 }

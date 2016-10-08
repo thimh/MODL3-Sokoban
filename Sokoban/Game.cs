@@ -88,40 +88,41 @@ namespace Sokoban
             switch (keyInfo.Key)
             {
                 case ConsoleKey.LeftArrow:
-                {
-                    Console.WriteLine("Left");
-                    _currentLevel.player.move("Left");
-                    break;
-                }
+                    {
+                        Console.WriteLine("Left");
+                        _currentLevel.player.Move("Left");
+                        _currentLevel.UpdateLevel(LevelChoice);
+                        break;
+                    }
 
                 case ConsoleKey.RightArrow:
-                {
-                    Console.WriteLine("Right");
-                    _currentLevel.player.move("Right");
-
+                    {
+                        Console.WriteLine("Right");
+                        _currentLevel.player.Move("Right");
+                        _currentLevel.UpdateLevel(LevelChoice);
                         break;
-                }
+                    }
 
                 case ConsoleKey.UpArrow:
-                {
-                    Console.WriteLine("Up");
-                    _currentLevel.player.move("Up");
-
+                    {
+                        Console.WriteLine("Up");
+                        _currentLevel.player.Move("Up");
+                        _currentLevel.UpdateLevel(LevelChoice);
                         break;
-                }
+                    }
 
                 case ConsoleKey.DownArrow:
-                {
-                    Console.WriteLine("Down");
-                    _currentLevel.player.move("Down");
-                    _currentLevel.UpdateLevel(LevelChoice);
-                    break;
-                }
+                    {
+                        Console.WriteLine("Down");
+                        _currentLevel.player.Move("Down");
+                        _currentLevel.UpdateLevel(LevelChoice);
+                        break;
+                    }
 
                 default:
-                {
-                    break;
-                }
+                    {
+                        break;
+                    }
             }
         }
     }
