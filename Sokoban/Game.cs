@@ -23,7 +23,7 @@ namespace Sokoban
             int levelHeight = System.IO.File.ReadLines(@"..\..\..\doolhof" + LevelChoice + ".txt").Count();
             int levelWidth = System.IO.File.ReadAllLines(@"..\..\..\doolhof" + LevelChoice + ".txt")[0].Count();
 
-            int maxLevelWidth = ma
+            int maxLevelWidth = 
 
             //Console.WriteLine(System.IO.File.ReadAllLines(@"..\..\..\doolhof" + LevelChoice + ".txt")[0].Count());
             _currentLevel = new Level(levelWidth, levelHeight);
