@@ -20,7 +20,7 @@ namespace Sokoban
             currentLevel = level;
         }
 
-        public void Move(String direction)
+        public void Move(String direction, int levelNumber)
         {
             currentPos = currentLevel.TileArray[currentX, currentY];
 
@@ -33,11 +33,26 @@ namespace Sokoban
                             currentPos.hasPlayer = false;
                             newPos = currentLevel.TileArray[currentX - 1, currentY];
                             currentPos = newPos;
-
+                            
                             currentPos.hasPlayer = true;
                             currentPos = new Tile(Tile.TileType.Player);
 
                             Console.WriteLine("You moved " + direction);
+
+                            string[] lines = new string[currentLevel.LevelLength];
+
+                            for (int j = 0; j < currentLevel.TileArray.Length; j++)
+                            {
+                                for (int i = 0; i < currentLevel.TileArray.GetLength(j); i++)
+                                {
+                                    Console.WriteLine(currentLevel.TileArray[i,j].TileIcon);
+                                    //string line = currentLevel.TileArray[i,j].TileIcon;
+                                    //lines[j] = line;
+                                }
+                            }
+
+                            System.IO.File.WriteAllLines(@"..\..\..\doolhof" + levelNumber + ".save.txt", lines);
+                            //TODO fix het bewegen --> sla de nieuwe tiles op in .save
                         }
                         else
                         {

@@ -20,7 +20,13 @@ namespace Sokoban
             ChooseLevel();
             //LoadLevel(1);
 
-            _currentLevel = new Level(100, 100);
+            int levelHeight = System.IO.File.ReadLines(@"..\..\..\doolhof" + LevelChoice + ".txt").Count();
+            int levelWidth = System.IO.File.ReadAllLines(@"..\..\..\doolhof" + LevelChoice + ".txt")[0].Count();
+
+            int maxLevelWidth = ma
+
+            //Console.WriteLine(System.IO.File.ReadAllLines(@"..\..\..\doolhof" + LevelChoice + ".txt")[0].Count());
+            _currentLevel = new Level(levelWidth, levelHeight);
             //this will only work with square levels! find another way.
 
             _currentLevel.PrintLevel(LevelChoice);
@@ -90,7 +96,7 @@ namespace Sokoban
                 case ConsoleKey.LeftArrow:
                     {
                         Console.Clear();
-                        _currentLevel.player.Move("Left");
+                        _currentLevel.player.Move("Left", LevelChoice);
                         _currentLevel.UpdateLevel(LevelChoice);
                         break;
                     }
@@ -98,7 +104,7 @@ namespace Sokoban
                 case ConsoleKey.RightArrow:
                     {
                         Console.Clear();
-                        _currentLevel.player.Move("Right");
+                        _currentLevel.player.Move("Right", LevelChoice);
                         _currentLevel.UpdateLevel(LevelChoice);
                         break;
                     }
@@ -106,7 +112,7 @@ namespace Sokoban
                 case ConsoleKey.UpArrow:
                     {
                         Console.Clear();
-                        _currentLevel.player.Move("Up");
+                        _currentLevel.player.Move("Up", LevelChoice);
                         _currentLevel.UpdateLevel(LevelChoice);
                         break;
                     }
@@ -114,7 +120,7 @@ namespace Sokoban
                 case ConsoleKey.DownArrow:
                     {
                         Console.Clear();
-                        _currentLevel.player.Move("Down");
+                        _currentLevel.player.Move("Down", LevelChoice);
                         _currentLevel.UpdateLevel(LevelChoice);
                         break;
                     }
