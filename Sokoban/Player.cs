@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Sokoban
 {
-    
     class Player
     {
         public Level currentLevel;
