@@ -244,3 +244,6 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /doolhof1.save.txt
+/doolhof4.save.txt
+/doolhof3.save.txt
+/doolhof2.save.txt

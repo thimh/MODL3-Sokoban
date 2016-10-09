@@ -31,9 +31,12 @@ namespace Sokoban
                         if (!HasCollision(direction))
                         {
                             currentPos.hasPlayer = false;
+                            Tile oldPos = currentPos;
                             newPos = currentLevel.TileArray[currentX - 1, currentY];
                             currentPos = newPos;
                             
+                            oldPos = new Tile(Tile.TileType.Floor);
+
                             currentPos.hasPlayer = true;
                             currentPos = new Tile(Tile.TileType.Player);
 
@@ -41,14 +44,14 @@ namespace Sokoban
 
                             string[] lines = new string[currentLevel.LevelLength];
 
-                            for (int j = 0; j < currentLevel.TileArray.Length; j++)
+                            for (int j = 0; j < currentLevel.LevelWidth; j++)
                             {
-                                for (int i = 0; i < currentLevel.TileArray.GetLength(j); i++)
+                                string line = "";
+                                for (int i = 0; i < currentLevel.LevelLength; i++)
                                 {
-                                    Console.WriteLine(currentLevel.TileArray[i,j].TileIcon);
-                                    //string line = currentLevel.TileArray[i,j].TileIcon;
-                                    //lines[j] = line;
+                                    line += currentLevel.TileArray[i,j].TileIcon;
                                 }
+                                lines[j] = line;
                             }
 
                             System.IO.File.WriteAllLines(@"..\..\..\doolhof" + levelNumber + ".save.txt", lines);
@@ -130,7 +133,6 @@ namespace Sokoban
                         break;
                     }
             }
-            //TODO redraw the level
         }
 
         public bool HasCollision(String direction)
