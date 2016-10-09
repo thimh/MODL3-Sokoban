@@ -21,11 +21,15 @@ namespace Sokoban
             //LoadLevel(1);
 
             int levelHeight = System.IO.File.ReadLines(@"..\..\..\doolhof" + LevelChoice + ".txt").Count();
-            int levelWidth = System.IO.File.ReadAllLines(@"..\..\..\doolhof" + LevelChoice + ".txt")[0].Count();
+            int[] widthInts = new int[levelHeight];
 
-            int maxLevelWidth = 
+            for (int i = 0; i < levelHeight; i++)
+            {
+                widthInts[i] = System.IO.File.ReadAllLines(@"..\..\..\doolhof" + LevelChoice + ".txt")[i].Count();
+            }
 
-            //Console.WriteLine(System.IO.File.ReadAllLines(@"..\..\..\doolhof" + LevelChoice + ".txt")[0].Count());
+            int levelWidth = widthInts.Max();
+
             _currentLevel = new Level(levelWidth, levelHeight);
             //this will only work with square levels! find another way.
 
