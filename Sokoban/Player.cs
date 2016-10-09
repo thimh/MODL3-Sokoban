@@ -179,5 +179,52 @@ namespace Sokoban
                     }
             }
         }
+
+        public bool HasBox(String direction)
+        {
+            switch (direction)
+            {
+                case "Left":
+                    {
+                        if (currentLevel.TileArray[currentX - 1, currentY].TypeOfTile == Tile.TileType.Box)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+
+                case "Right":
+                    {
+                        if (currentLevel.TileArray[currentX + 1, currentY].TypeOfTile == Tile.TileType.Box)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+
+                case "Up":
+                    {
+                        if (currentLevel.TileArray[currentX, currentY - 1].TypeOfTile == Tile.TileType.Box)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+
+                case "Down":
+                    {
+                        if (currentLevel.TileArray[currentX, currentY + 1].TypeOfTile == Tile.TileType.Box)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+
+                default:
+                    {
+                        return true;
+                    }
+            }
+        }
     }
 }
