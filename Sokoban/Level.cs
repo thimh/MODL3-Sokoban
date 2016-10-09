@@ -149,6 +149,9 @@ namespace Sokoban
             {
                 Console.WriteLine(lines[i]);
             }
+
+            //TODO this should update the level
+
             System.IO.File.WriteAllLines(@"..\..\..\doolhof" + levelNumber + ".save.txt", lines);
         }
 

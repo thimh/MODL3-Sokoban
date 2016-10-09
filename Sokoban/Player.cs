@@ -35,7 +35,8 @@ namespace Sokoban
                             currentPos = newPos;
 
                             currentPos.hasPlayer = true;
-                            currentPos.TileIcon = Tile.TileType.Player.ToString();
+                            currentPos = new Tile(Tile.TileType.Player);
+
                             Console.WriteLine("You moved " + direction);
                         }
                         else
@@ -55,7 +56,8 @@ namespace Sokoban
                             currentPos = newPos;
 
                             currentPos.hasPlayer = true;
-                            currentPos.TileIcon = Tile.TileType.Player.ToString();
+                            currentPos = new Tile(Tile.TileType.Player);
+
                             Console.WriteLine("You moved " + direction);
                         }
                         else
@@ -75,7 +77,8 @@ namespace Sokoban
                             currentPos = newPos;
 
                             currentPos.hasPlayer = true;
-                            currentPos.TileIcon = Tile.TileType.Player.ToString();
+                            currentPos = new Tile(Tile.TileType.Player);
+
                             Console.WriteLine("You moved " + direction);
                         }
                         else
@@ -95,7 +98,8 @@ namespace Sokoban
                             currentPos = newPos;
 
                             currentPos.hasPlayer = true;
-                            currentPos.TileIcon = Tile.TileType.Player.ToString();
+                            currentPos = new Tile(Tile.TileType.Player);
+
                             Console.WriteLine("You moved " + direction);
                         }
                         else
