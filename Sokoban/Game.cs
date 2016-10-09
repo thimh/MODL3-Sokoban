@@ -51,7 +51,7 @@ namespace Sokoban
 
 
 
-            if (LevelChoice != 1 && LevelChoice != 2 && LevelChoice != 3 && LevelChoice != 4)
+            if (LevelChoice<1 || LevelChoice >4)
             {
                 while (LevelChoice != 1 && LevelChoice != 2 && LevelChoice != 3 && LevelChoice != 4)
                 {

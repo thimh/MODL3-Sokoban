@@ -37,6 +37,7 @@ namespace Sokoban
                             currentPos.hasPlayer = true;
                             currentPos.TileIcon = Tile.TileType.Player.ToString();
                             Console.WriteLine("You moved " + direction);
+                            Console.WriteLine(currentPos.TileIcon);
                         }
                         else
                         {
@@ -77,6 +78,7 @@ namespace Sokoban
                             currentPos.hasPlayer = true;
                             currentPos.TileIcon = Tile.TileType.Player.ToString();
                             Console.WriteLine("You moved " + direction);
+                            Console.WriteLine("Test: " + currentPos.TileIcon);
                         }
                         else
                         {
@@ -97,6 +99,7 @@ namespace Sokoban
                             currentPos.hasPlayer = true;
                             currentPos.TileIcon = Tile.TileType.Player.ToString();
                             Console.WriteLine("You moved " + direction);
+                            
                         }
                         else
                         {
@@ -148,6 +151,53 @@ namespace Sokoban
                 case "Down":
                     {
                         if (currentLevel.TileArray[currentX, currentY + 1].TypeOfTile == Tile.TileType.Wall)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+
+                default:
+                    {
+                        return true;
+                    }
+            }
+        }
+
+        public bool HasBox(String direction)
+        {
+            switch (direction)
+            {
+                case "Left":
+                    {
+                        if (currentLevel.TileArray[currentX - 1, currentY].TypeOfTile == Tile.TileType.Box)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+
+                case "Right":
+                    {
+                        if (currentLevel.TileArray[currentX + 1, currentY].TypeOfTile == Tile.TileType.Box)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+
+                case "Up":
+                    {
+                        if (currentLevel.TileArray[currentX, currentY - 1].TypeOfTile == Tile.TileType.Box)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+
+                case "Down":
+                    {
+                        if (currentLevel.TileArray[currentX, currentY + 1].TypeOfTile == Tile.TileType.Box)
                         {
                             return true;
                         }
