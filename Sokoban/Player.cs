@@ -37,8 +37,13 @@ namespace Sokoban
 
                             currentPos.hasPlayer = true;
                             currentPos.TileIcon = Tile.TileType.Player.ToString();
+                            Console.WriteLine("You moved " + direction);
                         }
-                    
+                        else
+                        {
+                            Console.WriteLine("You tried to move " + direction + " but you cannot walk through walls!");
+                        }
+
                         break;
                     }
 
@@ -52,6 +57,11 @@ namespace Sokoban
 
                             currentPos.hasPlayer = true;
                             currentPos.TileIcon = Tile.TileType.Player.ToString();
+                            Console.WriteLine("You moved " + direction);
+                        }
+                        else
+                        {
+                            Console.WriteLine("You tried to move " + direction + " but you cannot walk through walls!");
                         }
 
                         break;
@@ -67,6 +77,11 @@ namespace Sokoban
 
                             currentPos.hasPlayer = true;
                             currentPos.TileIcon = Tile.TileType.Player.ToString();
+                            Console.WriteLine("You moved " + direction);
+                        }
+                        else
+                        {
+                            Console.WriteLine("You tried to move " + direction + " but you cannot walk through walls!");
                         }
 
                         break;
@@ -82,6 +97,11 @@ namespace Sokoban
 
                             currentPos.hasPlayer = true;
                             currentPos.TileIcon = Tile.TileType.Player.ToString();
+                            Console.WriteLine("You moved " + direction);
+                        }
+                        else
+                        {
+                            Console.WriteLine("You tried to move " + direction + " but you cannot walk through walls!");
                         }
 
                         break;
@@ -101,7 +121,7 @@ namespace Sokoban
             {
                 case "Left":
                     {
-                        if (currentLevel.TileArray[currentX - 1, currentY].TileIcon == Tile.TileType.Wall.ToString())
+                        if (currentLevel.TileArray[currentX - 1, currentY].TypeOfTile == Tile.TileType.Wall)
                         {
                             return true;
                         }
@@ -110,7 +130,7 @@ namespace Sokoban
 
                 case "Right":
                     {
-                        if (currentLevel.TileArray[currentX + 1, currentY].TileIcon == Tile.TileType.Wall.ToString())
+                        if (currentLevel.TileArray[currentX + 1, currentY].TypeOfTile == Tile.TileType.Wall)
                         {
                             return true;
                         }
@@ -119,7 +139,7 @@ namespace Sokoban
 
                 case "Up":
                     {
-                        if (currentLevel.TileArray[currentX, currentY - 1].TileIcon == Tile.TileType.Wall.ToString())
+                        if (currentLevel.TileArray[currentX, currentY - 1].TypeOfTile == Tile.TileType.Wall)
                         {
                             return true;
                         }
@@ -128,7 +148,7 @@ namespace Sokoban
 
                 case "Down":
                     {
-                        if (currentLevel.TileArray[currentX, currentY + 1].TileIcon == Tile.TileType.Wall.ToString())
+                        if (currentLevel.TileArray[currentX, currentY + 1].TypeOfTile == Tile.TileType.Wall)
                         {
                             return true;
                         }

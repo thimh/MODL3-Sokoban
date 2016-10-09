@@ -89,7 +89,7 @@ namespace Sokoban
             {
                 case ConsoleKey.LeftArrow:
                     {
-                        Console.WriteLine("Left");
+                        Console.Clear();
                         _currentLevel.player.Move("Left");
                         _currentLevel.UpdateLevel(LevelChoice);
                         break;
@@ -97,7 +97,7 @@ namespace Sokoban
 
                 case ConsoleKey.RightArrow:
                     {
-                        Console.WriteLine("Right");
+                        Console.Clear();
                         _currentLevel.player.Move("Right");
                         _currentLevel.UpdateLevel(LevelChoice);
                         break;
@@ -105,7 +105,7 @@ namespace Sokoban
 
                 case ConsoleKey.UpArrow:
                     {
-                        Console.WriteLine("Up");
+                        Console.Clear();
                         _currentLevel.player.Move("Up");
                         _currentLevel.UpdateLevel(LevelChoice);
                         break;
@@ -113,7 +113,7 @@ namespace Sokoban
 
                 case ConsoleKey.DownArrow:
                     {
-                        Console.WriteLine("Down");
+                        Console.Clear();
                         _currentLevel.player.Move("Down");
                         _currentLevel.UpdateLevel(LevelChoice);
                         break;
